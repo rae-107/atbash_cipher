@@ -72,5 +72,24 @@ class AtbashCipherGUI:
         decoded_message += char
     return decoded_message
 
+  def encode_handler(self):
+    phrase = self.message.get()
+    encoded_message = self.encode_message(phrase)
+    self.original_message_label.config(text='Original Message')
+    self.original_message.config(text=phrase)
+    self.output_label.config(text='Encoded Message')
+    self.output.config(text=encoded_message)
+    self.user_input.delete(0, tk.END)
+    self.user_input.insert(tk.END, encoded_message)
+    
+  def decode_handler(self):
+    phrase = self.message.get()
+    decoded_message = self.decode_message(phrase)
+    self.original_message_label.config(text='Original Message')
+    self.original_message.config(text=phrase)
+    self.output_label.config(text='Decoded Message')
+    self.output.config(text=decoded_message)
+    self.user_input.delete(0, tk.END)
+    self.user_input.insert(tk.END, decoded_message)
 
 AtbashCipherGUI()
